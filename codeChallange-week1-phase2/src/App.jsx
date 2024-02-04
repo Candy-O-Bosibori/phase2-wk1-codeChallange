@@ -33,7 +33,7 @@ function addTransaction(newTransaction) {
       <Header />
       <FormTransaction  onSubmit={addTransaction} />
       <SearchBar onSearch={setSearchTerm} />
-      
+      <TableTransaction transactions={filteredTransactions} onDelete={deleteTransaction} />
       
     </div>
   );

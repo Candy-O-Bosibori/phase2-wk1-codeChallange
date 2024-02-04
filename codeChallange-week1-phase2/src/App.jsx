@@ -32,6 +32,7 @@ function addTransaction(newTransaction) {
     <div className="App">
       <Header />
       <FormTransaction  onSubmit={addTransaction} />
+      <SearchBar onSearch={setSearchTerm} />
       
       
     </div>

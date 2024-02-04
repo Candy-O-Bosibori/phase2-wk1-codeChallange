@@ -25,7 +25,18 @@ function App() {
 function addTransaction(newTransaction) {
   setTransactions([...transactions, newTransaction]);
 }
+//function to filter the transactions by the description
+const filteredTransactions = transactions
+? transactions.filter((transaction) =>
+    transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+: [];
 
+//function to delete the transaction by it's id
+function deleteTransaction(id) {
+const updatedTransactions = transactions.filter((transaction) => transaction.id !== id);
+setTransactions(updatedTransactions);
+}
 
 //rendering some key components
   return (

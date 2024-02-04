@@ -1,34 +1,35 @@
-import { useState, useEffect } from "react"
-import "./App.css";
-import TransactionList from "./TransactionList";
 
+import './App.css';
+import {useState, useEffect} from 'react';
+import FormTransaction from './FormTransaction';
+import Header from './Header';
+import SearchBar from './SearchBar';
+import TableTransaction from './TableTransaction';
 
+//main function
 function App() {
-   const [data, setData] = useState([])
 
-// fetch data
-useEffect(() => {
-  fetch('https://my-json-server.typicode.com/Candy-O-Bosibori/transactions-API/db')
-    .then((response) => response.json())
-    .then((data) => {
-      setData(data);
-    });
-}, []);
+  const [transactions, setTransactions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
-// Add a transaction
-function handleItemFormSubmit(newData){
-  const newTransaction = [...data, newData]
-  setData(newTransaction)
-}
+//retriving data from the db
+  useEffect(() => {
+    fetch('https://my-json-server.typicode.com/Candy-O-Bosibori/transactions-API/transactions')
+      .then((response) => response.json())
+      .then((data) => {
+        setTransactions(data);
+      });
+  }, []);
 
+
+
+//rendering some key components
   return (
-    <div>
-        <header className="App-header">
-     <h1>Bank of Flatiron</h1>
-    </header>
-    
-
-      <TransactionList data={data}  onItemFormSubmit={handleItemFormSubmit}  />
+    <div className="App">
+      <Header />
+      
+      
+      
     </div>
   );
 }

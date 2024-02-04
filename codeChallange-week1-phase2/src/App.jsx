@@ -1,26 +1,35 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./App.css";
 import DisplayItems from "./DisplayItems";
 import SearchArea from "./SearchArea";
+import AddItem from "./AddItem";
 
 function App() {
    const [data, setData] = useState([])
 
-//retriving data from the db
+// fetch data
 useEffect(() => {
-  fetch('https://my-json-server.typicode.com/martinwakaba/flatiron/transactions')
+  fetch('https://my-json-server.typicode.com/Candy-O-Bosibori/transactions-API/db')
     .then((response) => response.json())
     .then((data) => {
-      setTransactions(data);
+      setData(data);
     });
 }, []);
+
+// Add a transaction
+
 
 
   return (
     <div>
-      <h1>Bank of Flatiron</h1>
+        <header className="App-header">
+     <h1>Bank of Flatiron</h1>
+    </header>
+    <SearchArea />
+   <AddItem />
 
-      <DisplayItems />
+
+      <DisplayItems data={data} />
     </div>
   );
 }

@@ -20,14 +20,18 @@ function App() {
         setTransactions(data);
       });
   }, []);
-
+  
+//function to add a new transaction from a form input
+function addTransaction(newTransaction) {
+  setTransactions([...transactions, newTransaction]);
+}
 
 
 //rendering some key components
   return (
     <div className="App">
       <Header />
-      
+      <FormTransaction  onSubmit={addTransaction} />
       
       
     </div>

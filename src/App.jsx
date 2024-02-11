@@ -46,6 +46,7 @@ setTransactions(updatedTransactions);
       <SearchBar onSearch={setSearchTerm} />
       <TableTransaction transactions={filteredTransactions} onDelete={deleteTransaction} />
       
+      
     </div>
   );
 }
